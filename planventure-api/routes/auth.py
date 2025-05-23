@@ -16,9 +16,9 @@ EMAIL_EXISTS = {"error": "Email already registered"}, 409
 @auth_bp.route('/register', methods=['POST', 'OPTIONS'])
 @cross_origin(
     origins=Config.CORS_ORIGINS,
-    methods=['POST', 'OPTIONS'],
-    allow_headers=['Content-Type', 'Authorization'],
-    supports_credentials=True
+    methods=Config.CORS_METHODS,
+    allow_headers=Config.CORS_HEADERS,
+    supports_credentials=Config.CORS_SUPPORTS_CREDENTIALS
 )
 def register():
     data = request.get_json()
