@@ -60,6 +60,7 @@ export const api = {
     },
 
     register: async (userData) => {
+      console.log('Registering user:', userData); // Debug log
       return api.post('/auth/register', userData);
     }
   }

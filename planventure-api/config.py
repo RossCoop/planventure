@@ -13,7 +13,9 @@ class Config:
     CORS_HEADERS = [
         'Content-Type',
         'Authorization',
-        'Access-Control-Allow-Credentials'
+        'Access-Control-Allow-Credentials',
+        'Access-Control-Allow-Origin',
+        'Access-Control-Allow-Headers'
     ]
     
     CORS_METHODS = [

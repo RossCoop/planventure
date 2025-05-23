@@ -64,6 +64,9 @@ const SignupForm = () => {
   };
 
   const handleSubmit = async (e) => {
+    console.log('Form submission triggered by:', e.type);
+    console.log('Event target:', e.target);
+    console.log('Current active element:', document.activeElement);
     e.preventDefault();
     
     // Validate form

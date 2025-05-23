@@ -2,6 +2,8 @@ from flask import Blueprint, request, jsonify
 from app import db
 from models import User
 from utils.validators import validate_email
+from flask_cors import cross_origin
+from config import Config
 
 auth_bp = Blueprint('auth', __name__)
 
@@ -11,7 +13,13 @@ MISSING_FIELDS = {"error": "Missing required fields"}, 400
 INVALID_EMAIL = {"error": "Invalid email format"}, 400
 EMAIL_EXISTS = {"error": "Email already registered"}, 409
 
-@auth_bp.route('/register', methods=['POST'])
+@auth_bp.route('/register', methods=['POST', 'OPTIONS'])
+@cross_origin(
+    origins=Config.CORS_ORIGINS,
+    methods=['POST', 'OPTIONS'],
+    allow_headers=['Content-Type', 'Authorization'],
+    supports_credentials=True
+)
 def register():
     data = request.get_json()
     
